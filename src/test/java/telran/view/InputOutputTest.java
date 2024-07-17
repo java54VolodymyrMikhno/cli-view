@@ -57,14 +57,14 @@ class InputOutputTest {
 	}
 
 	@Test
-	void readStringOptionsCitiesTest() {
-		HashSet<String> citiesSet = new HashSet<>();
-		citiesSet.add("Kyiv");
-		citiesSet.add("Lviv");
-		citiesSet.add("Kharkiv");
+	void readStringOptionsGenderTest() {
+		HashSet<String> genderSet = new HashSet<>();
+		genderSet.add("Female");
+		genderSet.add("Male");
+		
 
-		String city = io.readStringOptions("Enter main city of residence",
-				"Please choose one of the following: Kyiv, Lviv, Kharkiv", citiesSet);
+		String city = io.readStringOptions("Enter gender",
+				"Please choose one of the following: ",genderSet);
 		io.writeLine(city);
 	}
 

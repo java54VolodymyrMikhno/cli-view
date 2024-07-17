@@ -71,7 +71,7 @@ public interface InputOutput {
 	        if (options.contains(str)) {
 	            return str;
 	        } else {
-	            throw new RuntimeException("");
+	            throw new RuntimeException(String.join(" ",options));
 	        }
 	    });
 	}
