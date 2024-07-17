@@ -63,9 +63,9 @@ class InputOutputTest {
 		genderSet.add("Male");
 		
 
-		String city = io.readStringOptions("Enter gender",
+		String gender = io.readStringOptions("Enter gender",
 				"Please choose one of the following: ",genderSet);
-		io.writeLine(city);
+		io.writeLine(gender);
 	}
 
 	@Test
@@ -94,12 +94,12 @@ class InputOutputTest {
 				str -> str.matches("^(\\+972|0)?5[0-9]{8}$"));
 		LocalDate dateLastLogin = io.readIsoDateRange("Enter date of last login (yyyy-mm-dd):",
 				"Invalid date or date is in the future", LocalDate.MIN, LocalDate.now());
-		int numberOfLogin = checkNumberOfLogin();
+		int numberOfLogin = getNumberOfLogin();
 		User user = new User(userName, password, dateLastLogin, phoneNumber, numberOfLogin);
 		io.writeLine(user);
 	}
 
-	private Integer checkNumberOfLogin() {
+	private Integer getNumberOfLogin() {
 		return io.readObject("Enter number of logins (positive number):", "Invalid number of logins",
 				str -> {
 					int num = Integer.parseInt(str);
