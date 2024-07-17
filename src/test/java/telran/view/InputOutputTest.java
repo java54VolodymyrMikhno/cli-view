@@ -88,7 +88,7 @@ class InputOutputTest {
 	@Test
 	void readUserByFieldsTest() {
 		String userName = io.readStringPredicate("Enter username (at least 6 letters, first capital):",
-				"Invalid username format", str -> str.matches("[A-Z][a-z]{5,}"));
+				"Invalid username format", str -> str.matches("[A-Z][a-z]{6,}"));
 		String password = io.readStringPredicate(
 				"Enter password (at least 8 symbols, one capital, one lower case, one digit, one special):",
 				"Invalid password format",  passwordValidator);
@@ -96,21 +96,12 @@ class InputOutputTest {
 				str -> str.matches("^(\\+972|0)?5[0-9]{8}$"));
 		LocalDate dateLastLogin = io.readIsoDateRange("Enter date of last login (yyyy-mm-dd):",
 				"Invalid date or date is in the future", LocalDate.MIN, LocalDate.now());
-		int numberOfLogin = getNumberOfLogin();
+		int numberOfLogin = io.readNumberRange("Enter number of logins (positive number):",
+				"Invalid number of logins",1,Integer.MAX_VALUE).intValue();
 		User user = new User(userName, password, dateLastLogin, phoneNumber, numberOfLogin);
 		io.writeLine(user);
 	}
 
-	private Integer getNumberOfLogin() {
-		return io.readObject("Enter number of logins (positive number):", "Invalid number of logins",
-				str -> {
-					int num = Integer.parseInt(str);
-					if (num <= 0) {
-						throw new RuntimeException();
-					}
-					return num;
-				});
-	}
 
 	private Predicate<String> passwordValidator = str ->
     str.length() >= 8 &&
