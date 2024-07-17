@@ -67,13 +67,7 @@ public interface InputOutput {
 
 
 	default String readStringOptions(String prompt, String errorPrompt, HashSet<String> options) {
-	    return readObject(prompt, errorPrompt, str -> {
-	        if (options.contains(str)) {
-	            return str;
-	        } else {
-	            throw new RuntimeException(String.join(" ",options));
-	        }
-	    });
+		return readStringPredicate(prompt, errorPrompt, options::contains);
 	}
 
 	default LocalDate readIsoDate(String prompt, String errorPrompt) {

@@ -63,8 +63,10 @@ class InputOutputTest {
 		genderSet.add("Male");
 		
 
-		String gender = io.readStringOptions("Enter gender",
-				"Please choose one of the following: ",genderSet);
+		String genderSetString = String.join(", ", genderSet);
+		String promptMessageError = "Please choose one of the following: " + genderSetString;
+		String promptMessage="Enter Gender";
+		String gender = io.readStringOptions(promptMessage,promptMessageError, genderSet);
 		io.writeLine(gender);
 	}
 
