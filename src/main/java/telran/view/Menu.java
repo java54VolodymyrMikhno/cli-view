@@ -1,6 +1,6 @@
 package telran.view;
 
-import java.util.Arrays;
+
 import java.util.stream.IntStream;
 
 public class Menu implements Item {
